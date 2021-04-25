@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #511ec7 !important;
+}
+
+input{
+    padding: 6px;
+    font-size: 16px;
+    outline: 0;
+    border: 0;
+    background-color: white !important;
+}
+
+button{
+    padding: 6px;
+    font-size: 16px;
+    outline: 0;
+    border: 0;
+    background-color: white !important;
+}
