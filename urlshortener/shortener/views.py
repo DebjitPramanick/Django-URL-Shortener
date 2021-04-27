@@ -17,4 +17,5 @@ def create(request):
         uid = str(uuid.uuid4())[:5]
         new_url = Url(link=url, uuid=uid)
         new_url.save()
+        print(uid)
         return HttpResponse(uid)

@@ -19,8 +19,10 @@
                 <input type="text" placeholder="Enter your URL..." name="input" id="inputlink" />
                 <button type="submit" id="shorten">Shorten URL</button>
             </form>
-            <div class="result" id="result">
-                Your lnik:
+            <div class="result-container">
+                <h2 id="result">
+
+                </h2>
             </div>
         </div>
 
@@ -55,18 +57,20 @@
             e.preventDefault()
             let url = '/create'
             let inputLink = link.value
+
             fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrftoken
                 },
-                body: JSON.stringify({ 'url': inputLink }),
-                success: function(body){
-                    document.getElementById('result').innerHTML = `localhost:8000/${JSON.parse(body).url}`
-                }
+                credentials: 'same-origin',
+                body: JSON.stringify({ url: inputLink }),
+            }).then(function (data) {
+                data.text().then(text => 
+                    document.getElementById('result').innerHTML = `localhost:8000/${text}`
+                );
             })
-                .then(res => console.log(res.data))
         })
     </script>
 </body>
