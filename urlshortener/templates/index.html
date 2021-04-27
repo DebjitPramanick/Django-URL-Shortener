@@ -20,9 +20,8 @@
                 <button type="submit" id="shorten">Shorten URL</button>
             </form>
             <div class="result-container">
-                <h2 id="result">
-
-                </h2>
+                <a id="result">Your link will appear here.</a>
+                <button class="copy-btn">Copy</button>
             </div>
         </div>
 
@@ -67,9 +66,9 @@
                 credentials: 'same-origin',
                 body: JSON.stringify({ url: inputLink }),
             }).then(function (data) {
-                data.text().then(text => 
-                    document.getElementById('result').innerHTML = `localhost:8000/${text}`
-                );
+                data.text().then(text => {
+                    document.getElementById('result').innerText = `localhost:8000/${text}`
+                });
             })
         })
     </script>
