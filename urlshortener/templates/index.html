@@ -67,7 +67,7 @@
                 body: JSON.stringify({ url: inputLink }),
             }).then(function (data) {
                 data.text().then(text => {
-                    document.getElementById('result').innerText = `localhost:8000/${text}`
+                    document.getElementById('result').innerText = `<Your domain name>/${text}`
                 });
             })
         })
