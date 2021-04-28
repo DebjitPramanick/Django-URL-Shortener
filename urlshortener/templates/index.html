@@ -21,7 +21,7 @@
             </form>
             <div class="result-container">
                 <a id="result">Your link will appear here.</a>
-                <button class="copy-btn">Copy</button>
+                <button class="copy-btn" id="copy">Copy</button>
             </div>
         </div>
 
@@ -70,6 +70,28 @@
                     document.getElementById('result').innerText = `localhost:8000/${text}`
                 });
             })
+        })
+
+        document.getElementById('copy').addEventListener('click', ()=>{
+            if(document.getElementById('result').innerText !== "Your link will appear here."){
+                var copy = document.getElementById('result')
+                var r = document.createRange();
+                r.selectNode(copy);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(r);
+
+                try {
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'successful' : 'unsuccessful';
+                    alert('Copying URL was ' + msg);
+                    window.getSelection().removeAllRanges();
+                } catch (err) {
+                    alert('Oops, unable to copy');
+                }
+            }
+            else{
+                alert("No url is shortened.")
+            }
         })
     </script>
 </body>
